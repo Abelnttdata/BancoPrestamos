@@ -55,4 +55,14 @@ public class PrestamoControlador {
         return ResponseEntity.ok(prestamo);
     }
 
+    @GetMapping("/listarprestamos")
+    public ResponseEntity<Prestamo> listarPrestamos() throws noTienePrestamo{
+        Optional<Prestamo> optionalPrestamo = prestamoServicio.getListaPrestamos(idUsuario);
+        if(optionalPrestamo.isEmpty()){
+            throw new noTienePrestamo();
+        }
+        return ResponseEntity.ok(optionalPrestamo.get());
+    }
+
+
 }

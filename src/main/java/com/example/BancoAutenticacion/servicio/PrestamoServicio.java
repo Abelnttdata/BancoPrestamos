@@ -46,4 +46,8 @@ public class PrestamoServicio {
     public boolean crearPrestamo(Prestamo prestamo) {
         return prestamoRepositorio.crearPrestamo(prestamo);
     }
+
+    public Optional<Prestamo> getListaPrestamos(Integer idUsuario) {
+        return prestamoRepositorio.getListaPrestamos(idUsuario);
+    }
 }

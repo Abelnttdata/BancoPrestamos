@@ -42,4 +42,8 @@ public class PrestamoRepositorio {
             return false;
         }
     }
+
+    public Optional<Prestamo> getListaPrestamos(Integer idUsuario) {
+        return prestamoRepositorioDAO.findById(idUsuario);
+    }
 }
