@@ -35,7 +35,7 @@ public class PrestamoControlador {
     public ResponseEntity<Prestamo> realizarPrestamo(@RequestBody Prestamo prestamo) throws noTieneCuenta, saldoInsuficiente, PrestamoFallido{
         idUsuario = prestamoServicio.obtenerId();
         cuentaCliente = prestamoServicio.obtenerCuentasClientes();
-        if(cuentaCliente.isEmpty()){
+        if(cuentaCliente == null){
             throw new noTieneCuenta();
         }
         saldo = prestamoServicio.obtenerSaldo(cuentaCliente);
@@ -57,12 +57,11 @@ public class PrestamoControlador {
 
     @GetMapping("/listarprestamos")
     public ResponseEntity<Prestamo> listarPrestamos() throws noTienePrestamo{
+        idUsuario = prestamoServicio.obtenerId();
         Optional<Prestamo> optionalPrestamo = prestamoServicio.getListaPrestamos(idUsuario);
         if(optionalPrestamo.isEmpty()){
             throw new noTienePrestamo();
         }
         return ResponseEntity.ok(optionalPrestamo.get());
     }
-
-
 }

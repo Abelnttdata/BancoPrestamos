@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class BancoPrestamosApplication {
+public class BancoAutenticacionApplication {
 	@Bean
 	public RestTemplate getresttemplate() {
 		return new RestTemplate();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(BancoPrestamosApplication.class, args);
+		SpringApplication.run(BancoAutenticacionApplication.class, args);
 
 
 	}

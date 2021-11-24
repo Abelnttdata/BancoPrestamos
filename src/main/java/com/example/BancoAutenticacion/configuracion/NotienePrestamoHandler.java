@@ -14,7 +14,7 @@ public class NotienePrestamoHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({noTienePrestamo.class})
     protected ResponseEntity<Object> handleNotFound(
             Exception ex, WebRequest request){
-        return handleExceptionInternal(ex,"No tiene ninguna prestamos",
+        return handleExceptionInternal(ex,"No tiene ningun prestamo",
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }

@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.net.URI;
+import java.util.*;
 
 @Service
 public class PrestamoServicio {
@@ -26,13 +26,19 @@ public class PrestamoServicio {
     }
 
         public List<Cuenta> obtenerCuentasClientes(){
+        Integer idCliente = obtenerId();
+        String url = "http://localhost:8081//cuentas/cuentaByIdUsuario/" + idCliente;
+        try {
             ResponseEntity<Cuenta[]> response=
                     restTemplate.getForEntity(
-                            "http://localhost:8080/usuarios/verUsuarios",
+                            url,
                             Cuenta[].class);
             Cuenta[] cuenta = response.getBody();
             List<Cuenta> cuentaList= Arrays.asList(cuenta);
             return cuentaList;
+        }catch (Exception e){
+            return null;
+        }
         }
 
     public double obtenerSaldo(List<Cuenta> cuentaCliente) {
