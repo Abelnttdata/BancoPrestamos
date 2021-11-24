@@ -12,6 +12,7 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer idUsuario;
+    private Integer idCuentas;
     private Integer coutas;
     private Integer importe;
     private String tazaInteres;
@@ -19,9 +20,11 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(Integer id, Integer idUsuario, Integer coutas, Integer importe, String tazaInteres) {
+
+    public Prestamo(Integer id, Integer idUsuario, Integer idCuentas, Integer coutas, Integer importe, String tazaInteres) {
         this.id = id;
         this.idUsuario = idUsuario;
+        this.idCuentas = idCuentas;
         this.coutas = coutas;
         this.importe = importe;
         this.tazaInteres = tazaInteres;
@@ -65,5 +68,13 @@ public class Prestamo {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public Integer getIdCuentas() {
+        return idCuentas;
+    }
+
+    public void setIdCuentas(Integer idCuentas) {
+        this.idCuentas = idCuentas;
     }
 }
