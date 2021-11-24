@@ -32,7 +32,7 @@ public class PrestamoControlador {
     }
 
     @PostMapping("/realizarprestamo")
-    public ResponseEntity<Prestamo> realizarPrestamo(@RequestBody Prestamo prestamo) throws noTieneCuenta, saldoInsuficiente, PrestamoFallido{
+    public ResponseEntity<Prestamo> realizarPrestamo(@RequestBody Prestamo prestamo) throws noTieneCuenta, saldoInsuficiente, PrestamoFallido, PrestamoExitoso{
         idUsuario = prestamoServicio.obtenerId();
         cuentaCliente = prestamoServicio.obtenerCuentasClientes();
         if(cuentaCliente == null){
@@ -52,7 +52,7 @@ public class PrestamoControlador {
         if(!prestamoRealizado){
             throw new PrestamoFallido();
         }
-        return ResponseEntity.ok(prestamo);
+        throw new PrestamoExitoso();
     }
 
     @GetMapping("/listarprestamos")
